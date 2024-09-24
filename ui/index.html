@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trading CSV Filter</title>
+    <script>
+        window.onload = function () {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("end-date").setAttribute("max", today);
+            document.getElementById("start-date").setAttribute("max", today);
+        }
+    </script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/download" method="post">
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="start-date">
+
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="end-date">
+
+        <label for="platform">Trading Platform:</label>
+        <select id="platform" name="platform">
+            <option value="NSE">NSE</option>
+            <option value="BSE">BSE</option>
+        </select>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
